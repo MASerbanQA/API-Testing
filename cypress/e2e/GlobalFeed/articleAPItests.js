@@ -1,5 +1,4 @@
 const { withArticleAPI } = require("../../support/pageObjects/articleAPI")
-const { withTagsList } = require("../../support/pageObjects/tagsListAPI")
 
 describe('Testing various APIs on global feed',()=>{
 
