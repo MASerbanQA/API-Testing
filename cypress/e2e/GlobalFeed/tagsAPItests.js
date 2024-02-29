@@ -1,4 +1,4 @@
-const { withTagList } = require("../../support/pageObjects/tagsListAPI")
+const { withTagList } = require("../../support/pageObjects/tagsListApi")
 
 describe('Testing tags api behabior',()=>{
 
