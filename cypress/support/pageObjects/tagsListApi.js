@@ -12,4 +12,4 @@ export class TagsList{
 
 }
 
-export const withTagsList = new TagsList()
+export const withTagList = new TagsList()

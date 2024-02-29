@@ -1,9 +1,9 @@
-const { withTagsList } = require("../../support/pageObjects/tagsListAPI")
+const { withTagList } = require("../../support/pageObjects/tagsListAPI")
 
 describe('Testing tags api behabior',()=>{
 
     beforeEach(()=>{
-        withTagsList.mockTagsList()
+        withTagList.mockTagsList()
         cy.loginToApplication()
     })
 
