@@ -1,0 +1,48 @@
+{
+    "articles": [
+        {
+            "slug": "SlugID-1",
+            "title": "My title",
+            "description": "my description",
+            "tagList": [
+                "qa career",
+                "Bondar Academy",
+                "QA Skills",
+                "Value-Focused"
+            ],
+            "createdAt": "2024-01-27T21:52:32.682Z",
+            "updatedAt": "2024-01-27T21:52:32.682Z",
+            "favorited": false,
+            "favoritesCount": 300,
+            "author": {
+                "username": "SerbanQA",
+                "bio": null,
+                "image":null,
+                "following": false
+            }
+        },
+        {
+            "slug": "slugID-2",
+            "title": "Title 2",
+            "description": "Description",
+            "body": " some dummy text",
+            "tagList": [
+                "testing",
+                "stes",
+                "portfolio"
+            ],
+            "createdAt": "2024-01-27T21:50:38.825Z",
+            "updatedAt": "2024-01-27T21:50:38.825Z",
+            "favorited": false,
+            "favoritesCount": 99,
+            "author": {
+                "username": "SerbanQA",
+                "bio": null,
+                "image": null,
+                "following": false
+            }
+        }
+        
+    ],
+    "articlesCount": 2
+}
