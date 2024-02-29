@@ -10,6 +10,14 @@ describe('Testing various APIs on global feed',()=>{
         withArticleAPI.verifyRequestAndResponse()
     })
 
+    it.only('Verify article likes count',()=>{
+        withArticleAPI.verifyArticleLikes()
+
+
+
+
+    })
+
     
 
     
