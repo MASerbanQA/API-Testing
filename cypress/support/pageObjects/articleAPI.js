@@ -23,6 +23,44 @@ export class ArticleApi {
 
     }
 
+    deleteArticleThroughAPI(){
+
+        const userCredentials = {
+            "user": {
+                "email": "cy.apitest@mytest.ro",
+                "password": "Parola123"
+            }
+        }
+
+        const bodyRequest = {
+            "article": {
+                "title": "API Request 2",
+                "description": "Am dat cu Postman In el",
+                "body": "OsafiuQAAUT",
+                "tagList": []
+            }
+        }
+
+        cy.request('POST','https://conduit-api.bondaracademy.com/api/users/login',userCredentials).its('body').then(body=>{
+            const token = body.user.token
+
+            cy.request({
+                url: 'https://conduit-api.bondaracademy.com/api/articles/',
+                headers:{ 'Authorization': 'Token '+token},
+                method: 'POST',
+                body: bodyRequest
+            }).then( response =>{
+                expect(response.status).to.equal(201)
+            })
+            cy.contains('Global Feed').click().wait(500)
+            cy.get('.article-preview').first().click()
+            cy.get('.article-actions').contains('Delete Article').click()
+
+
+        })
+        
+    }
+
     verifyArticleLikes(){
         cy.intercept('GET','https://conduit-api.bondaracademy.com/api/articles/feed*',{"articles":[],"articlesCount":0})
         cy.intercept('GET','https://conduit-api.bondaracademy.com/api/articles*',{fixture:'articles.json'})

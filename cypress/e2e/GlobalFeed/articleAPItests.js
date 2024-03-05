@@ -10,8 +10,17 @@ describe('Testing various APIs on global feed',()=>{
         withArticleAPI.verifyRequestAndResponse()
     })
 
-    it.only('Verify article likes count',()=>{
+    it('Verify article likes count',()=>{
         withArticleAPI.verifyArticleLikes()
+
+
+
+
+    })
+
+    it.only('Delete new article',()=>{
+        withArticleAPI.deleteArticleThroughAPI()
+
 
 
 
