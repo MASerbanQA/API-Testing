@@ -56,6 +56,14 @@ export class ArticleApi {
             cy.get('.article-preview').first().click()
             cy.get('.article-actions').contains('Delete Article').click()
 
+            cy.request({
+                url:'https://conduit-api.bondaracademy.com/api/articles/',
+                method:'GET',
+                headers:{'Authoriztaion':'Token '+token},
+            }).its('body').then(articlesRetrieved=>{
+                expect(articlesRetrieved.articles[0].title).not.to.equal("API Request 2")
+            })
+
 
         })
         
