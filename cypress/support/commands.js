@@ -25,10 +25,26 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 Cypress.Commands.add('loginToApplication',()=>{
-    cy.visit('/login')
-    cy.get('[placeholder="Email"]').type('cy.apitest@mytest.ro')
-    cy.get('[placeholder="Password"]').type('Parola123')
-    cy.get('[type="submit"]').click()
+    const userCredentials = {
+        "user": {
+            "email": "cy.apitest@mytest.ro",
+            "password": "Parola123"
+        }
+    }
+
+    cy.request('POST','https://conduit-api.bondaracademy.com/api/users/login',userCredentials).its('body').then(body =>{
+        const token = body.user.token
+        cy.wrap(token).as('token')
+        cy.visit('/',{
+            onBeforeLoad(win){
+                win.localStorage.setItem('jwtToken', token)
+            }
+        })
+
+    })
+
+
+    
 
 
 
