@@ -17,6 +17,8 @@ export class ArticleApi {
             expect(xhrResponse.request.body.article.description).to.equal('This is a description')
             expect(xhrResponse.request.body.article.title).to.equal('Title')
         })
+            cy.get('.article-actions').contains('Delete Article').click()
+
 
 
 
@@ -24,13 +26,6 @@ export class ArticleApi {
     }
 
     deleteArticleThroughAPI(){
-
-        const userCredentials = {
-            "user": {
-                "email": "cy.apitest@mytest.ro",
-                "password": "Parola123"
-            }
-        }
 
         const bodyRequest = {
             "article": {
@@ -41,8 +36,7 @@ export class ArticleApi {
             }
         }
 
-        cy.request('POST','https://conduit-api.bondaracademy.com/api/users/login',userCredentials).its('body').then(body=>{
-            const token = body.user.token
+        cy.get('@token').then(token=>{
 
             cy.request({
                 url: 'https://conduit-api.bondaracademy.com/api/articles/',

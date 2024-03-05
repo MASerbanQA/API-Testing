@@ -18,7 +18,7 @@ describe('Testing various APIs on global feed',()=>{
 
     })
 
-    it.only('Delete new article',()=>{
+    it('Delete new article',()=>{
         withArticleAPI.deleteArticleThroughAPI()
 
 
