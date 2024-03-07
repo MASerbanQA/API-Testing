@@ -17,7 +17,7 @@ export class ArticleApi {
             expect(xhrResponse.request.body.article.description).to.equal('This is a description')
             expect(xhrResponse.request.body.article.title).to.equal('Title')
         })
-            cy.get('.article-actions').contains('Delete Article').click()
+
 
 
 
@@ -85,6 +85,37 @@ export class ArticleApi {
 
 
     }
+
+
+    addCommentOnLastArticle(){
+        cy.intercept('GET','https://conduit-api.bondaracademy.com/api/articles*').as('freshArticle')
+
+        const commentAdd ={
+            "comment":{
+                "body":"Comment adaugat cu API"
+            }
+        }
+
+        cy.get('@token').then(token =>{
+
+            cy.contains('Global Feed').click().wait(500)
+        cy.get('.article-preview').eq(0).click()
+       
+        cy.wait('@freshArticle').then(articleInfo =>{
+            cy.log(articleInfo)
+            this.articleId = articleInfo.response.body.articles[0].slug
+
+           cy.request({
+            url:"https://conduit-api.bondaracademy.com/api/articles/"+this.articleId+"/comments",
+            method:"POST",
+            headers:{'Authorization':"Token "+ token},
+            body: commentAdd
+                })
+            })
+         })
+        
+    }
+
 
 
 }
