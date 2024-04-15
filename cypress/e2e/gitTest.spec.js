@@ -5,6 +5,7 @@ describe("using git",()=>{
     it("test git",()=>{
 
         cy.visit('/')
+        console.log('yayy')
 
 
 
